@@ -39,6 +39,7 @@ diffcoeff = {'K': 1.96e-9, 'Na': 1.33e-9, 'Cl': 2.03e-9,
 class DiffusionPotential:
     def __init__(self, conc, tau, delta_t, t_end, name, temp=310):
         """
+        Initialize a class instance with attributes.
         :param conc: dict with K, Na and Cl as keys
         """
         self.T = temp  # temperature, K
@@ -58,7 +59,10 @@ class DiffusionPotential:
         self.psd, self.f = None, None
 
     def goldman_eq(self):
-        """potential in milli-volt [mV]"""
+        """
+        Calculating the potential using the Goldman equation. The value
+        of the potential is in milli-volt [mV]
+        """
         numerator_sum = 0
         denominator_sum = 0
         for ion in self.ion_list:  # loop through each ion
@@ -72,7 +76,10 @@ class DiffusionPotential:
                        (np.log(numerator_sum / denominator_sum)) * 1000
 
     def henderson_eq(self):
-        """potential in milli-volt [mV]"""
+        """
+        Calculating the potential using the Henderson equation. The value
+        of the potential is in milli-volt [mV]
+        """
         num_sum = 0
         denom_sum = 0
         num_ln = 0
@@ -86,6 +93,7 @@ class DiffusionPotential:
                          (np.log(num_ln / denom_ln)) * 1000
 
     def average_sigma(self):
+        """Calculating an estimate for the average sigma, conductivity"""
         psi = (R * self.T) / F
         summation = 0
         for ion in self.ion_list:
@@ -94,13 +102,23 @@ class DiffusionPotential:
         return (F / psi) * summation
 
     def delta_phi_eq(self):
-        """potential in milli-volt [mV]"""
+        """
+        Calculating the potential using an approximated equation using the
+        average sigma. The value of the potential is in milli-volt [mV]
+        """
         summation = 0
         for ion in self.ion_list:
             summation += ion.D * (ion.z ** 2) * (ion.c[1] - ion.c[0])
         self.delta_phi = (F / self.average_sigma()) * summation * 1000
 
     def exponential_decay(self, g=False, h=False):
+        """
+        Calculating the initial potential with the specified function
+        (g=True, h=False means Goldman, g=False, h=True means Henderson, and
+        g=False, h=False means the approximated equation with sigma.
+        Then the potential is calculated with an exponential decay. The unit
+        of the decaying potential is in milli-volt [mV]
+        """
         self.t = np.linspace(0, self.t_end, num=int(self.t_end / self.delta_t))
         if g:
             init_potential = self.goldman
@@ -111,10 +129,15 @@ class DiffusionPotential:
         self.exp_decay = abs(init_potential) * np.exp(-self.t / self.tau)
 
     def power_spectrum_density(self):
+        """Calculating the PSD using the periodogram function."""
         fs = 1 / self.delta_t
         self.f, self.psd = periodogram(self.exp_decay, fs)
 
     def calculate_everything(self, goldman=False, henderson=False):
+        """
+        This is the 'main' method which calculates everything and updates the
+        attributes of a class instance by using the other methods of the class.
+        """
         # Calculate initial potential
         self.goldman_eq()
         self.henderson_eq()

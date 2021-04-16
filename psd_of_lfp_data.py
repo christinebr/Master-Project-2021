@@ -9,7 +9,12 @@ from scipy.signal import periodogram
 
 
 def load_data_calculate_psd_and_save(file_name, lfp_name, fs_name):
-    """doc-string"""
+    """
+    Loading the LFP data (and the sampling frequency) and calculating PSD with
+    the periodogram function for each channel/row in the data. Then averaging
+    to get a mean PSD estimate and saving it together with the frequency
+    array in a file.
+    """
     data = loadmat('Data_LFP/'+file_name)[lfp_name]  # loading LFP data
     fs = loadmat('Data_LFP/'+file_name)[fs_name]  # sampling rate
 
