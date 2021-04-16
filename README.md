@@ -19,4 +19,9 @@ the power spectrum density of the potential.
 In **psd_of_lfp_data.py** I have loaded LFP data stored as .mat (because of 
 preprocessing in MATLAB) from dataset at CRCNS.org. Then I calculate the 
 average PSD and saves it in a .npz file, together with the corresponding
-frequency array.
+frequency array. Only for data from [CRCNS](https://crcns.org/).
+
+In **plot_psd_data.py** I load the PSD data (which was saved in files by
+**psd_of_lfp_data.py**, see above) and plot everything in one figure. 
+Only with data from [CRCNS](https://crcns.org/).
+

@@ -5,7 +5,7 @@ from scipy.signal import periodogram
 
 # This file load LFP data stored in .mat (MATLAB-file) and calculates a mean
 # PSD for the data file. The mean PSD together with the frequency array f is
-# stored for later use in .npz files.
+# stored for later use in .npz files. Only for data from CRCNS.org.
 
 
 def load_data_calculate_psd_and_save(file_name, lfp_name, fs_name):
