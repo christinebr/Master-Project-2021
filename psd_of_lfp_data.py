@@ -27,10 +27,7 @@ def load_data_calculate_psd_and_save(file_name, lfp_name, fs_name):
     mean_psd = np.mean(np.array(psd), axis=0)  # mean PSD over all rows
 
     # Save to file
-    if 'psd_' + file_name[:-4]+'.npz' in os.listdir('Data_PSD'):
-        np.savez('Data_PSD/psd_' + file_name[:-4]+'(1)', f=f, PSD=mean_psd)
-    else:
-        np.savez('Data_PSD/psd_' + file_name[:-4], f=f, PSD=mean_psd)
+    np.savez('Data_PSD/psd_' + file_name[:-4], f=f, PSD=mean_psd)
 
 
 if __name__ == '__main__':
@@ -53,9 +50,11 @@ if __name__ == '__main__':
         elif 'hc2' in filename:
             load_data_calculate_psd_and_save(filename, 'volt_lfp', 'fs')
 
-        elif 'pfc2' in filename:
-            load_data_calculate_psd_and_save(filename, 'volt_pfc', 'fs')
-            load_data_calculate_psd_and_save(filename, 'volt_ca1', 'fs')
-            
         elif 'bf1' in filename:
             load_data_calculate_psd_and_save(filename, 'LFP_data', 'fs')
+
+        elif 'pfc2' in filename:
+            if 'ca1' in filename:
+                load_data_calculate_psd_and_save(filename, 'volt_ca1', 'fs')
+            else:
+                load_data_calculate_psd_and_save(filename, 'volt_pfc', 'fs')
