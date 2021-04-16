@@ -52,10 +52,12 @@ N = len(v_t)
 fft_ = np.fft.fft(v_t)  # compute the FFT
 norm = abs(fft_)/N  # normalize the absolute value of FFT
 pos = norm[:N//2]  # using only the positive frequencies
+
 amplitude = 2*pos
 PSD = 2*(pos**2)
 
-plt.figure()  # Amplitude
+# Plotting amplitude spectrum
+plt.figure()
 plt.plot(amplitude[:35])  # plot only the first 40
 plt.title('Amplitude spectrum of \n'+t2)
 plt.xlabel('frequency')
@@ -63,7 +65,8 @@ plt.ylabel('amplitude')
 plt.savefig('Figures/amplitude_spectrum_sine_waves', dpi=500)
 plt.show()
 
-plt.figure()  # PSD
+# Plotting PSD
+plt.figure()
 plt.plot(PSD[:35])  # plot only the first 40
 plt.title('Power spectrum density of \n'+t2)
 plt.xlabel('frequency')
