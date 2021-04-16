@@ -11,7 +11,12 @@ calculate the power spectrum density (PSD) by using the Fast Fourier Transform
 (FFT). This is done with two methods: directly with Numpy's fft function and 
 with SciPy's ``signal.periodogram`` function. 
 
-In **diffusionpotential.py** contains the classes ``Ion`` and 
+**diffusionpotential.py** contains the classes ``Ion`` and 
 ``DiffusionPotential``. The main class is ``DiffusionPotential`` which is used 
 to calculate diffusion potential, the exponential decay of the potential and
 the power spectrum density of the potential. 
+
+In **psd_of_lfp_data.py** I have loaded LFP data stored as .mat (because of 
+preprocessing in MATLAB) from dataset at CRCNS.org. Then I calculate the 
+average PSD and saves it in a .npz file, together with the corresponding
+frequency array.
