@@ -15,8 +15,8 @@ def load_data_calculate_psd_and_save(file_name, lfp_name, fs_name):
     to get a mean PSD estimate and saving it together with the frequency
     array in a file.
     """
-    data = loadmat('Data_LFP/'+file_name)[lfp_name]  # loading LFP data
-    fs = loadmat('Data_LFP/'+file_name)[fs_name]  # sampling rate
+    data = loadmat('Data_LFP_crcns/'+file_name)[lfp_name]  # loading LFP data
+    fs = loadmat('Data_LFP_crcns/'+file_name)[fs_name]  # sampling rate
 
     psd = []
     f = None
@@ -27,12 +27,12 @@ def load_data_calculate_psd_and_save(file_name, lfp_name, fs_name):
     mean_psd = np.mean(np.array(psd), axis=0)  # mean PSD over all rows
 
     # Save to file
-    np.savez('Data_PSD/psd_' + file_name[:-4], f=f, PSD=mean_psd)
+    np.savez('Data_PSD_crcns/psd_' + file_name[:-4], f=f, PSD=mean_psd)
 
 
 if __name__ == '__main__':
     # Getting all data file names
-    directory = "Data_LFP"
+    directory = "Data_LFP_crcns"
     data_files = []
     for file in os.listdir(directory):
         if file.endswith(".mat"):
