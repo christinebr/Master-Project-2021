@@ -25,3 +25,8 @@ In **plot_psd_data.py** I load the PSD data (which was saved in files by
 **psd_of_lfp_data.py**, see above) and plot everything in one figure. 
 Only with data from [CRCNS](https://crcns.org/).
 
+In **psd_torbjorn_and_graity.py** I load LFP data from Torbjørn and Graity, 
+calculate the mean psd and save to file.
+
+In **plot_psd.py** I plot psd data taken from several figures and from data
+of Torbjørn and Graity.

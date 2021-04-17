@@ -2,8 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# This file load the PSD data (which was saved in files by psd_of_lfp_data.py)
-# and plot everything in one figure. Only with data from CRCNS.org.
+# This file plot PSD from data collected from figures and some data.
 
 
 def psd_torbjorn():
