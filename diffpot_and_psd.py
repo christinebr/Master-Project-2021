@@ -202,12 +202,14 @@ plt.show()
 pot_data = {}  # dictionary for potential data
 psd_data = {}  # dictionary for psd data
 for model in data:
-    pot_data[str(model.name)] = {'t': model.t,
-                                 'exp_pot': model.exp_decay}
-    psd_data[str(model.name)] = {'f': model.f,
-                                 'psd': model.psd}
+    pot_data['t'] = model.t
+    pot_data[str(model.name)] = model.exp_decay
+
+    psd_data['f'] = model.f
+    psd_data[str(model.name)] = model.psd
+
 df_pot_data = pd.DataFrame(data=pot_data)  # making DataFrame
-df_pot_data.to_csv("Data_PSD_other/potential_data_normal.csv")  # save to file
+df_pot_data.to_csv("Data_PSD_other/potential_data_normal.csv", index=False)  # save to file
 
 df_psd_data = pd.DataFrame(data=psd_data)  # making DataFrame
-df_psd_data.to_csv("Data_PSD_other/psd_data_normal.csv")  # save to file
+df_psd_data.to_csv("Data_PSD_other/psd_data_normal.csv", index=False)  # save to file
