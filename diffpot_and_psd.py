@@ -3,6 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from diffusionpotential import DiffusionPotential
 
+# This file uses scenario 1 (delta_K + delta_Na = delta_Cl) to find the
+# initial concentrations. For each concentration data I initialize an instance
+# of the # DiffusionPotential class. Each class instance gets their initial
+# diffusion potential and their exponential decay calculated. At last the
+# PSD of the exponential decaying potential is calculated.
+# This file generates two plot: one for the exponentially decaying potential
+# and one for the PSDs of that potential.
+# At last the exponentially decaying diffusion potential, the calculated PSD
+# and corresponding frequency array is saved to a .csv file for later use.
+
 
 def scenario1(k=None, na=None, kbase=3.0, nabase=146.0):
     """

@@ -30,3 +30,13 @@ calculate the mean psd and save to file.
 
 In **plot_psd.py** I plot psd data taken from several figures and from data
 of Torbjørn and Graity.
+
+In **diffpot_and_psd.py** I have used scenario 1 (delta_K + delta_Na = 
+delta_Cl) to find the initial concentrations. For each concentration data I 
+initialize an instance of the ``DiffusionPotential`` class. Each class instance
+gets their initial diffusion potential and the exponential decay of that
+calculated. Then the PSD of the exponential decaying potential is calculated. 
+This file generates two plot: one for the exponentially decaying potential
+and one for the PSDs of that potential. At last the exponentially decaying 
+diffusion potential, the calculated PSD and corresponding frequency array is 
+saved to a .csv file for later use.
