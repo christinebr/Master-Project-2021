@@ -40,3 +40,10 @@ This file generates two plot: one for the exponentially decaying potential
 and one for the PSDs of that potential. At last the exponentially decaying 
 diffusion potential, the calculated PSD and corresponding frequency array is 
 saved to a .csv file for later use.
+
+In **main_psd_plot.py** I have loaded all files with PSD data and plotted 
+everything into one figure.
+
+In **SD_diffpot_and_psd.py** I have used scenario 4 in the case of 
+Spreading Depression. The same steps as in **diffpot_and_psd.py** are done 
+for this case. 

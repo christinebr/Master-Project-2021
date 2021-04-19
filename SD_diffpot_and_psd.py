@@ -3,6 +3,20 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from diffusionpotential import DiffusionPotential
 
+# This file does the same as diffpot_and_psd.py, only with Spreading Depression
+# The file uses scenario 4 (2*delta_K = - delta_Na and delta_K = -delta_Cl) to
+# find the initial concentrations in the case of Spreading Depression (and
+# some other cases as spike-wave seizures and epileptic seizures). For each
+# concentration data I initialize an instance of the DiffusionPotential class.
+# Each class instance gets their initial diffusion potential and their
+# exponential decay calculated. At last the PSD of the exponential decaying
+# potential is calculated.
+# This file generates two plot: one for the exponentially decaying potential
+# and one for the PSDs of that potential.
+# At last the exponentially decaying diffusion potential, the calculated PSD
+# and corresponding frequency array is saved to a .csv file for later use.
+
+
 DELTA_T = 0.01
 T_END = 100
 
