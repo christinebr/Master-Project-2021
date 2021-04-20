@@ -175,7 +175,7 @@ data.append(Frolich2008)
 # Plot diffusion potential
 plt.figure()
 for model in data:
-    model.calculate_everything()
+    model.calculate_everything(henderson=True)
     plt.plot(model.t, model.exp_decay, '--', label=model.name)
 plt.xlabel('time [s]')
 plt.ylabel('potential [mV]')
@@ -185,7 +185,7 @@ plt.savefig('Figures/diff_pot', dpi=500)
 plt.show()
 
 # Plot PSD of diffusion potential
-plt.figure(figsize=(9.6, 4.8))
+plt.figure()
 for model in data:
     plt.plot(np.log10(model.f), np.log10(model.psd), '--',
              linewidth=1, label=model.name)
