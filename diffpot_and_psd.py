@@ -193,7 +193,7 @@ plt.xlabel('log$_{10}$(frequency) [Hz]')
 plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
 plt.title('PSDs of diffusion potential')
 plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")  # outside right
-plt.savefig('Figures/psd_of_diff_pot', dpi=500)
+plt.savefig('Figures/psd_of_diff_pot', dpi=500, bbox_inches='tight')
 plt.show()
 
 # =============================================================================

@@ -50,5 +50,10 @@ plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
 # plt.ylim([-10, 1])
 # plt.legend(loc="lower left", ncol=2)
 plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left", ncol=2)  # outside right
-plt.savefig('Figures/main_psd_plot', dpi=500, bbox_inches='tight')
+
+if with_SD:
+    plt.savefig('Figures/SD_main_psd_plot', dpi=500, bbox_inches='tight')
+else:
+    plt.savefig('Figures/main_psd_plot', dpi=500, bbox_inches='tight')
+
 plt.show()

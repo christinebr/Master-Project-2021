@@ -184,7 +184,7 @@ for model in data_SD:
 plt.xlabel('time [s]')
 plt.ylabel('potential [mV]')
 plt.title('SD (Spreading Depression) diffusion potential')
-plt.legend(loc='upper right', ncol=2)
+plt.legend(loc='upper right', ncol=2, prop={'size': 7})
 plt.savefig('Figures/SD_diff_pot', dpi=500)
 plt.show()
 
@@ -197,7 +197,7 @@ plt.xlabel('log$_{10}$(frequency) [Hz]')
 plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
 plt.title('PSDs of SD diffusion potential')
 plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")  # outside right
-plt.savefig('Figures/SD_psd_of_diff_pot', dpi=500)
+plt.savefig('Figures/SD_psd_of_diff_pot', dpi=500, bbox_inches='tight')
 plt.show()
 
 # =============================================================================
