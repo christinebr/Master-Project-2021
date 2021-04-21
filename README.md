@@ -47,3 +47,8 @@ everything into one figure.
 In **SD_diffpot_and_psd.py** I have used scenario 4 in the case of 
 Spreading Depression. The same steps as in **diffpot_and_psd.py** are done 
 for this case. 
+
+
+In **torbjorn.py** I compare SciPy's signal.periodiogram function and the 
+PSD-formula. I use Torbjørn's LFP data and calculate the power spectrum 
+density (PSD) with both method. The results are plotted in the same figure.
