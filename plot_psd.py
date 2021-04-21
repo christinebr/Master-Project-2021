@@ -17,8 +17,7 @@ def psd_graity():
     # Loading data
     data = np.load("Data_PSD_other/psd_graity.npz")
     # Plotting psd vs. frequency
-    plt.plot(np.log10(data['f']), np.log10(data['PSD']),
-             linewidth=0.5, label='LFP-Graity')
+    plt.plot(np.log10(data['f']), np.log10(data['PSD']), label='LFP-Graity')
 
 
 def psd_from_baranauskas2012():
