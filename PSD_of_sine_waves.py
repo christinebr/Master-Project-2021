@@ -44,7 +44,7 @@ t2 = "v(t) = sin(1*2\u03C0t)+0.5sin(5*2\u03C0t)+0.1sin(10*2\u03C0t)+" \
 plt.title(t2)
 plt.xlabel('t')
 plt.ylabel('v(t)')
-plt.savefig('Figures/superposition_of_sine_waves', dpi=500)
+#plt.savefig('Figures/superposition_of_sine_waves', dpi=500)
 plt.show()
 
 # Single-sided amplitude spectrum and PSD
@@ -54,7 +54,7 @@ norm = abs(fft_)/N  # normalize the absolute value of FFT
 pos = norm[:N//2]  # using only the positive frequencies
 
 amplitude = 2*pos
-PSD = 2*(pos**2)
+PSD = 2*(pos**2)*len(fft_)/fs
 
 # Plotting amplitude spectrum
 plt.figure()
@@ -62,7 +62,7 @@ plt.plot(amplitude[:35])  # plot only the first 40
 plt.title('Amplitude spectrum of \n'+t2)
 plt.xlabel('frequency')
 plt.ylabel('amplitude')
-plt.savefig('Figures/amplitude_spectrum_sine_waves', dpi=500)
+#plt.savefig('Figures/amplitude_spectrum_sine_waves', dpi=500)
 plt.show()
 
 # Plotting PSD
@@ -71,7 +71,7 @@ plt.plot(PSD[:35])  # plot only the first 40
 plt.title('Power spectrum density of \n'+t2)
 plt.xlabel('frequency')
 plt.ylabel('power')
-plt.savefig('Figures/power_spectrum_sine_waves', dpi=500)
+#plt.savefig('Figures/power_spectrum_sine_waves', dpi=500)
 plt.show()
 
 # PSD using periodogram

@@ -53,26 +53,26 @@ def scenario4(k=None, na=None, kbase=3.0, nabase=146.0):
 data_SD = []
 # =========== Enger2015 ===================================================
 # cortical spreading depression in the visual cortex of adult living mice
-TAU = 50
-t = f", $\u03C4$={TAU}"
-delta_k = 19
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-EngerFig4F = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                name='EngerFig4F'+t)
-
-delta_k = 23
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-EngerFig4G = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                name='EngerFig4G'+t)
-
-delta_k = 28
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-EngerFig4H = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                name='EngerFig4H'+t)
-data_SD.extend([EngerFig4F, EngerFig4G, EngerFig4H])
+# TAU = 50
+# t = f", $\u03C4$={TAU}"
+# delta_k = 19
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# EngerFig4F = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                 name='EngerFig4F'+t)
+#
+# delta_k = 23
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# EngerFig4G = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                 name='EngerFig4G'+t)
+#
+# delta_k = 28
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# EngerFig4H = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                 name='EngerFig4H'+t)
+# data_SD.extend([EngerFig4F, EngerFig4G, EngerFig4H])
 
 # =========== Herreras2020 ===================================================
-# spreading depression in CA1 strata (hippocampus)
+# Figure 1, spreading depression in CA1 strata (hippocampus)
 TAU = 30
 t = f", $\u03C4$={TAU}"
 delta_k = 51
@@ -83,18 +83,18 @@ data_SD.append(HerrerasFig1)
 
 # =========== Sykova1983 ===================================================
 # Figure 14 B - spreading depression in rat cerebellum
-TAU = 10.2
+TAU = 18
 t = f", $\u03C4$={TAU}"
-delta_k = 32
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+delta_k = 28
+c1 = scenario4(k=delta_k, kbase=4, nabase=149)
 SykovaFig14B = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
                                   name='SykovaFig14B'+t)
 
 # Figure 24 - spreading depression in rat cerebellum
-TAU = 5*60
+TAU = 130
 t = f", $\u03C4$={TAU}"
-delta_k = 40
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+delta_k = 38
+c1 = scenario4(k=delta_k, kbase=2, nabase=149)
 SykovaFig24 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
                                  name='SykovaFig24'+t)
 data_SD.extend([SykovaFig14B, SykovaFig24])
@@ -102,76 +102,91 @@ data_SD.extend([SykovaFig14B, SykovaFig24])
 # =========== Hansen1981 ===================================================
 # Figure 1 - spreading depression elicted by a brief needle stab in the frontal
 # cortex
-TAU = 12
+TAU = 16
 t = f", $\u03C4$={TAU}"
-delta_k = 53
+delta_k = 50
 c1 = scenario4(k=delta_k, kbase=3, nabase=149)
 HansenFig1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
                                 name='HansenFig1'+t)
 data_SD.append(HansenFig1)
 
-# Figure 2 - spreading depression
-TAU = 12
-t = f", $\u03C4$={TAU}"
-delta_k = 50
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-HansenFig2 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                name='HansenFig2'+t)
-data_SD.append(HansenFig2)
+# # Figure 2 - spreading depression
+# TAU = 12  # only rise
+# t = f", $\u03C4$={TAU}"
+# delta_k = 47
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# HansenFig2 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                 name='HansenFig2'+t)
+# data_SD.append(HansenFig2)
 
 # =========== Kraig1983 ===================================================
 # Figure 4 - spreading depression, cerebellar molecular layer of the catfish
-TAU = 4*60
+TAU = 125
 t = f", $\u03C4$={TAU}"
-delta_k = 38
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+delta_k = 36
+c1 = scenario4(k=delta_k, kbase=2.3, nabase=149)
 KraigFig4 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
                                name='KraigFig4'+t)
 data_SD.append(KraigFig4)
 
-# ========================= Amzica 2002 =======================================
-# Figure 6B, spike-wave seizures
-TAU = 20
-t = f", $\u03C4$={TAU}"
-delta_k = 8.25
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-AmzicaFig6B = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                 name='AmzicaFig6B'+t)
-# Figure 7, spike-wave seizures
-TAU = 20
-t = f", $\u03C4$={TAU}"
-delta_k = 6.5
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-AmzicaFig7 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                name='AmzicaFig7'+t)
-data_SD.extend([AmzicaFig6B, AmzicaFig7])
-
-
-# ========================= Frölich 2008 ======================================
-# Figure 7, spike-wave seizures
-TAU = 20
-t = f", $\u03C4$={TAU}"
-delta_k = 7
-c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-FrolichFig1C = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                  name='FrolichFig1C'+t)
-data_SD.append(FrolichFig1C)
-
-# ========================= Raimondo ======================================
-# Figure 1, during seizure
-TAU = 20
-t = f", $\u03C4$={TAU}"
-delta_k = 11
-c1 = scenario4(k=delta_k, kbase=4, nabase=149)
-RaimondoFig1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
-                                  name='RaimondoFig1'+t)
-data_SD.append(RaimondoFig1)
-
 # ========================= Nicholson 1980 ====================================
+# Figure 3, spreading depression
+TAU = 20
+t = f", $\u03C4$={TAU}"
+delta_k = 33
+c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+NicholsonFig6 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+                                   name='NicholsonFig6'+t)
+data_SD.append(NicholsonFig6)
+
+# # ========================= Amzica 2002 =======================================
+# # Figure 6B, spike-wave seizures
+# TAU = 20
+# t = f", $\u03C4$={TAU}"
+# delta_k = 8.25
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# AmzicaFig6B = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                  name='AmzicaFig6B'+t)
+# # Figure 7, spike-wave seizures
+# TAU = 20
+# t = f", $\u03C4$={TAU}"
+# delta_k = 6.5
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# AmzicaFig7 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                 name='AmzicaFig7'+t)
+# data_SD.extend([AmzicaFig6B, AmzicaFig7])
+#
+#
+# # ========================= Frölich 2008 ======================================
+# # Figure 7, spike-wave seizures
+# TAU = 20
+# t = f", $\u03C4$={TAU}"
+# delta_k = 7
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# FrolichFig1C = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                   name='FrolichFig1C'+t)
+# data_SD.append(FrolichFig1C)
+#
+# # ========================= Raimondo ======================================
+# # Figure 1, during seizure
+# TAU = 20
+# t = f", $\u03C4$={TAU}"
+# delta_k = 11
+# c1 = scenario4(k=delta_k, kbase=4, nabase=149)
+# RaimondoFig1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                   name='RaimondoFig1'+t)
+# data_SD.append(RaimondoFig1)
 
 
-# ========================= Hertz 2013 ======================================
-# Figure 6, epileptic
+# # ========================= Hertz 2013 ======================================
+# # Figure 6, epileptic
+# TAU = 10
+# t = f", $\u03C4$={TAU}"
+# delta_k = 2.3
+# c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+# HertzFig6 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T, t_end=T_END,
+#                                name='HertzFig6'+t)
+# data_SD.append(HertzFig6)
 
 # =============================================================================
 #                       PLOTTING - Spreading Depression
@@ -185,7 +200,7 @@ plt.xlabel('time [s]')
 plt.ylabel('potential [mV]')
 plt.title('SD (Spreading Depression) diffusion potential')
 plt.legend(loc='upper right', ncol=2, prop={'size': 7})
-plt.savefig('Figures/SD_diff_pot', dpi=500)
+#plt.savefig('Figures/SD_diff_pot', dpi=500)
 plt.show()
 
 # Plot PSD of diffusion potential
@@ -197,7 +212,7 @@ plt.xlabel('log$_{10}$(frequency) [Hz]')
 plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
 plt.title('PSDs of SD diffusion potential')
 plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")  # outside right
-plt.savefig('Figures/SD_psd_of_diff_pot', dpi=500, bbox_inches='tight')
+#plt.savefig('Figures/SD_psd_of_diff_pot', dpi=500, bbox_inches='tight')
 plt.show()
 
 # =============================================================================

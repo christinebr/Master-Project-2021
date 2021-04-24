@@ -56,13 +56,19 @@ c1 = scenario1(na=5.9, nabase=146)
 Dietzel1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                               name='DietzelFig3'+t)
 # Dietzel 1982 Figure 4A - recorded Na and K in 100 micro meters depth
-c2 = scenario1(k=6, na=15, kbase=3, nabase=149)
+TAU = 4
+t = f", \u03C4={TAU}"
+c2 = scenario1(k=6, kbase=2.3, nabase=149)
+# c2 = scenario1(k=6, na=15, kbase=3, nabase=149)
 Dietzel2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
-                              name='DietzelFig4A100'+t)
-# Dietzel 1982 Figure 4A - recorded Na and K in 1000 micro meters depth
-c3 = scenario1(k=6, na=7, kbase=3, nabase=149)
+                              name='DietzelFig4A'+t)
+# Dietzel 1982 Figure 4B - recorded Na and K in 1000 micro meters depth
+TAU = 6
+t = f", \u03C4={TAU}"
+c3 = scenario1(k=7, kbase=2.5, nabase=149)
+# c3 = scenario1(k=6, na=7, kbase=3, nabase=149)
 Dietzel3 = DiffusionPotential(conc=c3, tau=TAU, delta_t=dt, t_end=t_end,
-                              name='DietzelFig4A1000'+t)
+                              name='DietzelFig4B'+t)
 
 data = [Dietzel1, Dietzel2, Dietzel3]
 
