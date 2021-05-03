@@ -14,7 +14,7 @@ from diffusionpotential import DiffusionPotential
 # and corresponding frequency array is saved to a .csv file for later use.
 
 
-def scenario1(k=None, na=None, kbase=3.0, nabase=146.0):
+def scenario1(k=None, na=None, kbase=3.0, nabase=149.0):
     """
     Using scenario 1 to calculate initial concentration difference for K, Na
     and Cl.
@@ -37,185 +37,189 @@ def scenario1(k=None, na=None, kbase=3.0, nabase=146.0):
         init_c = {'K': [kbase, kbase+na],
                   'Na': [nabase, nabase-na],
                   'Cl': [clbase, clbase]}
-    if k and na:
+    if k and na:   # scenario 5?
         init_c = {'K': [kbase, kbase+k],
                   'Na': [nabase, nabase-na],
                   'Cl': [clbase, clbase+k-na]}
     return init_c
 
 
-dt = 0.01
-t_end = 100
+if __name__ == '__main__':
+    dt = 0.01  # time step
+    t_end = 100  # calculate potential for 100 seconds
 
-# ========================= Dietzel 1982 ======================================
-# recording in the sensorimotor cortex of cats, simulation on cortical surface
-TAU = 10
-t = f", \u03C4={TAU}"
-# Dietzel 1982 Figure 3 - depth profile of Na
-c1 = scenario1(na=5.9, nabase=146)
-Dietzel1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                              name='DietzelFig3'+t)
-# Dietzel 1982 Figure 4A - recorded Na and K in 100 micro meters depth
-TAU = 4
-t = f", \u03C4={TAU}"
-c2 = scenario1(k=6, kbase=2.3, nabase=149)
-# c2 = scenario1(k=6, na=15, kbase=3, nabase=149)
-Dietzel2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
-                              name='DietzelFig4A'+t)
-# Dietzel 1982 Figure 4B - recorded Na and K in 1000 micro meters depth
-TAU = 6
-t = f", \u03C4={TAU}"
-c3 = scenario1(k=7, kbase=2.5, nabase=149)
-# c3 = scenario1(k=6, na=7, kbase=3, nabase=149)
-Dietzel3 = DiffusionPotential(conc=c3, tau=TAU, delta_t=dt, t_end=t_end,
-                              name='DietzelFig4B'+t)
+    # ========================= Dietzel 1982 ==================================
+    # recording in the sensorimotor cortex of cats, simulation on cortical surface
+    TAU = 10
+    t = f", \u03C4={TAU}"
+    # Dietzel 1982 Figure 3 - depth profile of Na
+    c1 = scenario1(na=5.9, nabase=146)
+    Dietzel1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                  name='DietzelFig3'+t)
+    # Dietzel 1982 Figure 4A - recorded Na and K in 100 micro meters depth
+    TAU = 4
+    t = f", \u03C4={TAU}"
+    c2 = scenario1(k=6, kbase=3, nabase=149)
+    # c2 = scenario1(k=6, na=15, kbase=3, nabase=149)
+    Dietzel2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
+                                  name='DietzelFig4A'+t)
+    # Dietzel 1982 Figure 4B - recorded Na and K in 1000 micro meters depth
+    TAU = 6
+    t = f", \u03C4={TAU}"
+    c3 = scenario1(k=7, kbase=3, nabase=149)
+    # c3 = scenario1(k=6, na=7, kbase=3, nabase=149)
+    Dietzel3 = DiffusionPotential(conc=c3, tau=TAU, delta_t=dt, t_end=t_end,
+                                  name='DietzelFig4B'+t)
 
-data = [Dietzel1, Dietzel2, Dietzel3]
+    data = [Dietzel1, Dietzel2, Dietzel3]
 
+    # ========================= Haj-Yasein 2015 ===============================
+    # 10s simulation at 20 Hz
+    # Figure 2a - recordings in hippocampal synaptic stratum radiatum layer CA1
+    TAU = 3
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=4.75, kbase=3.25, nabase=149)
+    HajYasein1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                    name='Haj-YaseinFig2a'+t)
+    # Figure 2b - recodings from the stratum pyramidale
+    TAU = 2.5
+    t = f", $\u03C4$={TAU}"
+    c2 = scenario1(k=9.25, kbase=3.25, nabase=149)
+    HajYasein2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
+                                    name='Haj-YaseinFig2b' + t)
 
-# ========================= Haj-Yasein 2015 ===================================
-# 10s simulation at 20 Hz
-TAU = 5
-t = f", $\u03C4$={TAU}"
-# Figure 2a - recordings in hippocampal synaptic stratum radiatum layer CA1
-c1 = scenario1(k=4.75, kbase=3.25, nabase=149)
-HajYasein1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                name='Haj-YaseinFig2a'+t)
-# Figure 2b - recodings from the stratum pyramidale
-c2 = scenario1(k=9.25, kbase=3.25, nabase=149)
-HajYasein2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
-                                name='Haj-YaseinFig2b' + t)
+    data.extend([HajYasein1, HajYasein2])
 
-data.extend([HajYasein1, HajYasein2])
+    # ================== Cordingley 1978 (Graity2017) =========================
+    # Cordingley Figure 5 (Graity Figure 2B) - depth profile, recorded in cat
+    # visual cortex, electrical stimulation of the thalamus
+    TAU = 0.75
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=1.891, kbase=2.735, nabase=149)
+    Cordingley = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                    name='CordingleyFig5'+t)
+    data.append(Cordingley)
 
+    # ========================= Sykova 1983 ===================================
+    # Figure 3A - recorded in L7 spinal cord of cat, tetanic simulation of
+    # posterier tibial nerve
+    TAU = 12
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=6, kbase=3, nabase=149)
+    SykovaFig3A = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                     name='SykovaFig3A'+t)
+    # Figure 14A - recorded in rat cerebellum, simulation at 20 Hz
+    TAU = 4
+    t = f", $\u03C4$={TAU}"
+    c2 = scenario1(k=5, kbase=3, nabase=149)
+    SykovaFig14A = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt,
+                                      t_end=t_end, name='SykovaFig14A'+t)
 
-# ================== Cordingley 1978 (Graity2017) =============================
-# Cordingley Figure 5 (Graity Figure 2B) - depth profile, recorded in cat
-# visual cortex, electrical stimulation of the thalamus
-TAU = 5
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=1.891, kbase=2.735, nabase=149)
-Cordingley = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                name='CordingleyFig2B'+t)
-data.append(Cordingley)
+    data.extend([SykovaFig3A, SykovaFig14A])
 
+    # ========================= Mccreery 1983 =================================
+    # Figure 2B - recorded 750 micro meter beneath an electrode injection
+    TAU = 25
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=4, kbase=3, nabase=149)
+    MccreeryFig2B = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt,
+                                       t_end=t_end, name='MccreeryFig2B'+t)
+    data.append(MccreeryFig2B)
 
-# ========================= Sykova 1983 =======================================
-# Figure 3A - recorded in L7 spinal cord of cat, tetanic simulation of
-# posterier tibial nerve
-TAU = 11.8
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=6, kbase=3, nabase=149)
-SykovaFig3A = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                 name='SykovaFig3A'+t)
-# Figure 14A - recorded in rat cerebellum, simulation at 20 Hz
-TAU = 10
-t = f", $\u03C4$={TAU}"
-c2 = scenario1(k=5, kbase=3, nabase=149)
-SykovaFig14A = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
-                                  name='SykovaFig14A'+t)
+    # ========================= Halnes 2016 ===================================
+    # simulation, depth profile (Videm 2018, Figure 2.4)
+    TAU = 5
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=5.999, kbase=3, nabase=149)
+    Halnes2016 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                    name='Halnes2016'+t)
+    data.append(Halnes2016)
 
-data.extend([SykovaFig3A, SykovaFig14A])
+    # ========================= Nicholson1987  ================================
+    # Figure 3, repetitive stimulation
+    TAU = 20
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=4.4, kbase=3, nabase=149)
+    Nicholson1987 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt,
+                                       t_end=t_end, name='NicholsonFig4'+t)
+    data.append(Nicholson1987)
 
+    # ========================= Octeau 2019 ===================================
+    # Figure 1G, response to light flash
+    TAU = 6
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=0.9, kbase=4.5, nabase=149)
+    Octeau2019 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                    name='OcteauFig1G'+t)
+    data.append(Octeau2019)
 
-# ========================= Mccreery 1983 =====================================
-# Figure 2B - recorded 750 micro meter beneath an electrode injection
-TAU = 30
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=4, kbase=3, nabase=149)
-MccreeryFig2B = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                   name='MccreeryFig2B'+t)
-data.append(MccreeryFig2B)
+    # ========================= Amzica 2002 ===================================
+    # Figure 3A, slow oscillation
+    TAU = 2
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=0.6, kbase=3.4, nabase=149)
+    Amzica2002 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                    name='AmzicaFig3A'+t)
+    data.append(Amzica2002)
 
+    # ========================= Frölich 2008 ==================================
+    # Figure 1B, slow oscillation
+    TAU = 2
+    t = f", $\u03C4$={TAU}"
+    c1 = scenario1(k=1.6, kbase=3, nabase=149)
+    Frolich2008 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
+                                     name='FrolichFig1B'+t)
+    data.append(Frolich2008)
 
-# ========================= Halnes 2016 =======================================
-# simulation, depth profile (Videm 2018, Figure 2.4)
-TAU = 30
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=5.999, kbase=3, nabase=149)
-Halnes2016 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                name='Halnes2016'+t)
-data.append(Halnes2016)
+    # =========================================================================
+    #                             PLOTTING
+    # =========================================================================
+    trust = [Dietzel2, Dietzel3, HajYasein1, HajYasein1, SykovaFig3A,
+             SykovaFig14A, MccreeryFig2B, Nicholson1987, Octeau2019]
+    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b',
+              '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'royalblue', 'gold',
+              'mediumseagreen', 'tomato', 'mediumorchid']
 
+    # Plot diffusion potential
+    plt.figure()
+    for model, color in zip(data, colors):
+        model.calculate_everything(henderson=True)
+        plt.plot(model.t, model.exp_decay, '--', color=color, label=model.name)
+    plt.xlabel('time [s]')
+    plt.ylabel('potential [mV]')
+    plt.title('Diffusion potential')
+    plt.legend(loc='upper right', ncol=2)
+    plt.savefig('Figures/diff_pot.pdf', dpi=500, bbox_inches='tight')
+    plt.show()
 
-# ========================= Nicholson1987  ====================================
-# Figure 4, depth profile
-TAU = 30
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=4.4, kbase=3, nabase=149)
-Nicholson1987 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                   name='NicholsonFig4'+t)
-data.append(Nicholson1987)
+    # Plot PSD of diffusion potential
+    plt.figure(figsize=(10, 6))
+    for model, color in zip(data, colors):
+        plt.plot(np.log10(model.f), np.log10(model.psd), '--',
+                 color=color, linewidth=1, label=model.name)
+    plt.xlabel('log$_{10}$(frequency) [Hz]')
+    plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
+    plt.title('PSDs of diffusion potential')
+    plt.legend(bbox_to_anchor=(1.02, 1), loc="upper left")  # outside right
+    plt.savefig('Figures/psd_of_diff_pot.pdf', dpi=500, bbox_inches='tight')
+    plt.show()
 
+    # =========================================================================
+    #             Saving potential data and psd data for later use
+    # =========================================================================
+    pot_data = {}  # dictionary for potential data
+    psd_data = {}  # dictionary for psd data
+    for model in data:
+        pot_data['t'] = model.t
+        pot_data[str(model.name)] = model.exp_decay
 
-# ========================= Octeau 2019 =======================================
-# Figure 1G
-TAU = 6.1
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=0.9, kbase=4.5, nabase=149)
-Octeau2019 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                name='OcteauFig1G'+t)
-data.append(Octeau2019)
+        psd_data['f'] = model.f
+        psd_data[str(model.name)] = model.psd
 
-# ========================= Amzica 2002 =======================================
-# Figure 3A, oscillation
-TAU = 20
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=0.6, kbase=3.4, nabase=149)
-Amzica2002 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                name='AmzicaFig3A'+t)
-data.append(Amzica2002)
+    df_pot_data = pd.DataFrame(data=pot_data)  # making DataFrame
+    # save to file
+    df_pot_data.to_csv("Data_PSD_other/potential_data_normal.csv", index=False)
 
-# ========================= Frölich 2008 ======================================
-# Figure 1B, oscillation
-TAU = 20
-t = f", $\u03C4$={TAU}"
-c1 = scenario1(k=1.6, kbase=3, nabase=149)
-Frolich2008 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
-                                 name='FrolichFig1B'+t)
-data.append(Frolich2008)
-
-# =============================================================================
-#                             PLOTTING
-# =============================================================================
-# Plot diffusion potential
-plt.figure()
-for model in data:
-    model.calculate_everything(henderson=True)
-    plt.plot(model.t, model.exp_decay, '--', label=model.name)
-plt.xlabel('time [s]')
-plt.ylabel('potential [mV]')
-plt.title('Diffusion potential')
-plt.legend(loc='upper right', ncol=2)
-plt.savefig('Figures/diff_pot', dpi=500)
-plt.show()
-
-# Plot PSD of diffusion potential
-plt.figure()
-for model in data:
-    plt.plot(np.log10(model.f), np.log10(model.psd), '--',
-             linewidth=1, label=model.name)
-plt.xlabel('log$_{10}$(frequency) [Hz]')
-plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
-plt.title('PSDs of diffusion potential')
-plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")  # outside right
-plt.savefig('Figures/psd_of_diff_pot', dpi=500, bbox_inches='tight')
-plt.show()
-
-# =============================================================================
-#             Saving potential data and psd data for later use
-# =============================================================================
-pot_data = {}  # dictionary for potential data
-psd_data = {}  # dictionary for psd data
-for model in data:
-    pot_data['t'] = model.t
-    pot_data[str(model.name)] = model.exp_decay
-
-    psd_data['f'] = model.f
-    psd_data[str(model.name)] = model.psd
-
-df_pot_data = pd.DataFrame(data=pot_data)  # making DataFrame
-df_pot_data.to_csv("Data_PSD_other/potential_data_normal.csv", index=False)  # save to file
-
-df_psd_data = pd.DataFrame(data=psd_data)  # making DataFrame
-df_psd_data.to_csv("Data_PSD_other/psd_data_normal.csv", index=False)  # save to file
+    df_psd_data = pd.DataFrame(data=psd_data)  # making DataFrame
+    # save to file
+    df_psd_data.to_csv("Data_PSD_other/psd_data_normal.csv", index=False)
