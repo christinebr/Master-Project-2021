@@ -31,7 +31,7 @@ ax4 = fig.add_subplot(4, 1, 4)
 ax4.plot(t, sin4)
 ax4.set_title('sin(30*2\u03C0t)')
 plt.tight_layout()
-plt.savefig('Figures/four_sine_waves', dpi=500)
+plt.savefig('Figures/four_sine_waves.pdf', dpi=500, bbox_inches='tight')
 plt.show()
 
 # Plot of the superposition
@@ -44,7 +44,7 @@ t2 = "v(t) = sin(1*2\u03C0t)+0.5sin(5*2\u03C0t)+0.1sin(10*2\u03C0t)+" \
 plt.title(t2)
 plt.xlabel('t')
 plt.ylabel('v(t)')
-#plt.savefig('Figures/superposition_of_sine_waves', dpi=500)
+plt.savefig('Figures/superposition_of_sine_waves.pdf', dpi=500, bbox_inches='tight')
 plt.show()
 
 # Single-sided amplitude spectrum and PSD
@@ -62,7 +62,7 @@ plt.plot(amplitude[:35])  # plot only the first 40
 plt.title('Amplitude spectrum of \n'+t2)
 plt.xlabel('frequency')
 plt.ylabel('amplitude')
-#plt.savefig('Figures/amplitude_spectrum_sine_waves', dpi=500)
+plt.savefig('Figures/amplitude_spectrum_sine_waves.pdf', dpi=500, bbox_inches='tight')
 plt.show()
 
 # Plotting PSD
@@ -71,7 +71,7 @@ plt.plot(PSD[:35])  # plot only the first 40
 plt.title('Power spectrum density of \n'+t2)
 plt.xlabel('frequency')
 plt.ylabel('power')
-#plt.savefig('Figures/power_spectrum_sine_waves', dpi=500)
+plt.savefig('Figures/power_spectrum_sine_waves.pdf', dpi=500, bbox_inches='tight')
 plt.show()
 
 # PSD using periodogram
