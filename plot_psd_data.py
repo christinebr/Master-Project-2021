@@ -19,7 +19,7 @@ def get_data_filenames():
     return datafiles
 
 
-def plot_psd_data(filename):
+def plot_psd_data(filename, line_color):
     # Loading data
     data = np.load('Data_PSD_crcns/'+filename)
     f = np.array(data['f'][0, :])
@@ -41,7 +41,7 @@ def plot_psd_data(filename):
         lw = 1
 
     # Plotting psd vs. frequency
-    plt.plot(np.log10(f), np.log10(psd),
+    plt.plot(np.log10(f), np.log10(psd), color=line_color,
              linewidth=lw, label=filename[4:-4])
 
 
@@ -51,8 +51,11 @@ if __name__ == '__main__':
     # Plotting
     plt.figure()
     data_files = sorted(data_files, reverse=True)
-    for file in data_files:
-        plot_psd_data(file)
+    colors = ['cornflowerblue', 'gold', 'limegreen', 'darksalmon',
+              'maroon', 'darkslategray',  'darkcyan', 'saddlebrown',
+              'darkkhaki', 'lightgreen', 'skyblue', 'plum']
+    for data_file, color in zip(data_files, colors):
+        plot_psd_data(data_file, line_color=color)
     plt.title('PSD of LFP data')
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
