@@ -123,7 +123,7 @@ if __name__ == '__main__':
     data_SD.append(HansenFig2)
 
     # ======================= Kraig1983 =======================================
-    # Figure 4 - spreading depression, cerebellar molecular layer of the catfish
+    # Figure 4 - spreading depression, cerebellar molecular layer of catfish
     TAU = 125
     t = f", $\u03C4$={TAU}"
     delta_k = 36
@@ -142,7 +142,7 @@ if __name__ == '__main__':
                                        t_end=T_END, name='NicholsonFig6'+t)
     data_SD.append(NicholsonFig6)
 
-    # ========================= Amzica 2002 =================================
+    # =========================== Amzica 2002 =================================
     # Figure 6B, spike-wave seizures
     TAU = 20
     t = f", $\u03C4$={TAU}"
@@ -193,8 +193,8 @@ if __name__ == '__main__':
     #                       PLOTTING - Spreading Depression
     # =========================================================================
     colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b',
-              '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'royalblue', 'gold',
-              'mediumseagreen', 'tomato', 'mediumorchid']
+              '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'mediumaquamarine',
+              'gold', 'lightcoral', 'skyblue', 'palegreen']
     # Plot diffusion potential
     plt.figure()
     for model, color in zip(data_SD, colors):
@@ -208,20 +208,20 @@ if __name__ == '__main__':
     plt.show()
 
     # Plot PSD of diffusion potential
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(8, 5))
     for model, color in zip(data_SD, colors):
         plt.plot(np.log10(model.f), np.log10(model.psd), '-.', color=color,
                  linewidth=1, label=model.name)
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
     plt.title('PSDs of SD diffusion potential')
-    plt.legend(bbox_to_anchor=(1.02, 1), loc="upper left")  # outside right
+    plt.legend(loc='upper right', ncol=2, prop={'size': 7})
     plt.savefig('Figures/SD_psd_of_diff_pot.pdf', dpi=500, bbox_inches='tight')
     plt.show()
 
-    # =============================================================================
+    # =========================================================================
     #           Saving SD potential data and SD psd data for later
-    # =============================================================================
+    # =========================================================================
     pot_SD_data = {}  # dictionary for potential data
     psd_SD_data = {}  # dictionary for psd data
     for model in data_SD:
@@ -233,7 +233,9 @@ if __name__ == '__main__':
         psd_SD_data[str(model.name)] = model.psd
 
     df_pot_data = pd.DataFrame(data=pot_SD_data)  # making DataFrame
-    df_pot_data.to_csv("Data_PSD_other/pot_data_SD.csv", index=False)  # save to file
+    # save to file
+    df_pot_data.to_csv("Data_PSD_other/pot_data_SD.csv", index=False)
 
     df_psd_data = pd.DataFrame(data=psd_SD_data)  # making DataFrame
-    df_psd_data.to_csv("Data_PSD_other/psd_data_SD.csv", index=False)  # save to file
+    # save to file
+    df_psd_data.to_csv("Data_PSD_other/psd_data_SD.csv", index=False)
