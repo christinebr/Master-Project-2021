@@ -2,8 +2,9 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-# This file load the PSD data (which was saved in files by psd_of_lfp_data.py)
-# and plot everything in one figure. Only with data from CRCNS.org.
+# This file load the PSD data (which was saved in files by
+# psd_of_crcns_lfp_data.py) and plot everything in one figure.
+# All data taken from CRCNS.org.
 
 
 def get_data_filenames():
