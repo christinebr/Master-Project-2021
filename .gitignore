@@ -131,3 +131,11 @@ dmypy.json
 Data_LFP_crcns/
 
 Figures/
+
+Data_PSD_other/pot_data_SD.csv
+
+Data_PSD_other/psd_data_normal.csv
+
+Data_PSD_other/psd_data_SD.csv
+
+Data_PSD_other/potential_data_normal.csv
