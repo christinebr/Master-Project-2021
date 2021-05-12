@@ -1,36 +1,42 @@
+import h5py
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import periodogram
 
-# In this file I calculate the PSD of Torbjørn's LFP data using SciPy's
+# Here I calculated the PSD of Graity's LFP data using SciPy's
 # signal.periodogram function, and by using the formula for PSD.
 # The result of both method are plotted in the same figure. The lines
 # overlap which indicate that the two methods give the same result
 
 
-def psd_with_periodogramn():
-    """Calculate and plot mean psd with periodogram function"""
-    # Load data
-    lfp = np.load("Data_LFP_other/lfp_run26.npy")[4:-6, :-1]
-    samp_rate_lfp = 2000  # sample rate
-    # Calculate psd for each channel
-    f, pxx = periodogram(lfp, samp_rate_lfp)
+def psd_periodogram():
+    file_name = 'Data_LFP_other/mouse_1_lfp_trial_avg_3sec.h5'
+    h5 = h5py.File(file_name, 'r')
+    lfp_off_flash = h5['lfp_off_flash'][...]
+
+    fs = 2500  # sampling rate
+
+    f, pxx = periodogram(lfp_off_flash, fs)
+
     # Calculate mean
-    psd_mean = np.mean(pxx, axis=0)
-    # Plot
-    plt.plot(np.log10(f), np.log10(psd_mean),
+    psd_off_mean = np.mean(pxx, axis=0)
+
+    # Plotting
+    plt.plot(np.log10(f), np.log10(psd_off_mean),
              linewidth=0.5, label='periodogram')
 
 
-def psd_with_formula():
+def psd_formula():
     """Calculate and plot mean psd with formula"""
     # Load data
-    lfp = np.load("Data_LFP_other/lfp_run26.npy")[4:-6, :-1]
+    file_name = 'Data_LFP_other/mouse_1_lfp_trial_avg_3sec.h5'
+    h5 = h5py.File(file_name, 'r')
+    lfp = h5['lfp_off_flash'][...]
 
     n_points = lfp.shape[1]  # number of points
-    samp_rate_lfp = 2000  # sample rate
-    dt = 1 / samp_rate_lfp  # delta t
-    df = samp_rate_lfp/n_points  # delta f
+    fs = 2500  # sampling rate
+    dt = 1 / fs  # delta t
+    df = fs/n_points  # delta f
 
     # Getting the sample frequencies of the Discrete Fourier Transform (DFT)
     f_dft = np.fft.fftfreq(n_points, d=dt)
@@ -51,10 +57,10 @@ def psd_with_formula():
 
 if __name__ == '__main__':
     plt.figure()
-    plt.title('PSD of LFP data from Torbjørn')
+    plt.title('PSD of LFP data from Graity')
 
-    psd_with_periodogramn()
-    psd_with_formula()
+    psd_periodogram()
+    psd_formula()
 
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')

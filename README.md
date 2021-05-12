@@ -47,9 +47,10 @@ Only with data from [CRCNS](https://crcns.org/).
 In **psd_torbjorn_and_graity.py** I load LFP data from Torbjørn and Graity, 
 calculate the mean psd and save to file.
 
-In **torbjorn.py** I compare SciPy's signal.periodiogram function and the 
-PSD-formula. I use Torbjørn's LFP data and calculate the power spectrum 
-density (PSD) with both method. The results are plotted in the same figure.
+In **torbjorn.py** and **graity.py** I compare SciPy's signal.periodiogram 
+function and the PSD-formula. I use the LFP data and calculate the power 
+spectrum density (PSD) with both method. The results are plotted in the same 
+figure.
 
 In **plot_psd_others.py** I plot psd data taken from several figures 
 (Baranauskas, Jankowski, and Miller) and from LFP data from Torbjørn and
