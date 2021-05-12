@@ -53,8 +53,6 @@ class DiffusionPotential:
         self.goldman = None
         self.henderson = None
         self.delta_phi = None
-        self.potential = np.array([self.goldman, self.henderson,
-                                   self.delta_phi])
         self.exp_decay, self.t = None, None
         self.psd, self.f = None, None
 
@@ -66,12 +64,12 @@ class DiffusionPotential:
         numerator_sum = 0
         denominator_sum = 0
         for ion in self.ion_list:  # loop through each ion
-            if ion.z > 0:  # a positive ion c = [min, max]
-                numerator_sum += ion.D * ion.c[0]  # "outside" = box 1
-                denominator_sum += ion.D * ion.c[1]  # "inside" = box 0
+            if ion.z > 0:  # a positive ion c = [base, max delta c]
+                numerator_sum += ion.D * ion.c[0]
+                denominator_sum += ion.D * ion.c[1]
             else:  # negative ion
-                numerator_sum += ion.D * ion.c[1]  # "inside" = box 0
-                denominator_sum += ion.D * ion.c[0]  # "outside" = box 1
+                numerator_sum += ion.D * ion.c[1]
+                denominator_sum += ion.D * ion.c[0]
         self.goldman = (R * self.T / F) * \
                        (np.log(numerator_sum / denominator_sum)) * 1000
 
