@@ -49,7 +49,7 @@ if __name__ == '__main__':
     t_end = 100  # calculate potential for 100 seconds
 
     # ========================= Dietzel 1982 ==================================
-    # recording in the sensorimotor cortex of cats, simulation on cortical surface
+    # recording in sensorimotor cortex of cats, simulation on cortical surface
     TAU = 10
     t = f", \u03C4={TAU}"
     # Dietzel 1982 Figure 3 - depth profile of Na
@@ -177,8 +177,8 @@ if __name__ == '__main__':
     trust = [Dietzel2, Dietzel3, HajYasein1, HajYasein1, SykovaFig3A,
              SykovaFig14A, MccreeryFig2B, Nicholson1987, Octeau2019]
     colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b',
-              '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'royalblue', 'gold',
-              'mediumseagreen', 'tomato', 'mediumorchid']
+              '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'mediumaquamarine',
+              'gold', 'lightcoral', 'skyblue', 'palegreen']
 
     # Plot diffusion potential
     plt.figure()
@@ -188,19 +188,19 @@ if __name__ == '__main__':
     plt.xlabel('time [s]')
     plt.ylabel('potential [mV]')
     plt.title('Diffusion potential')
-    plt.legend(loc='upper right', ncol=2)
+    plt.legend(loc='upper right', ncol=2, prop={'size': 10})
     plt.savefig('Figures/diff_pot.pdf', dpi=500, bbox_inches='tight')
     plt.show()
 
     # Plot PSD of diffusion potential
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(8, 5))
     for model, color in zip(data, colors):
         plt.plot(np.log10(model.f), np.log10(model.psd), '--',
                  color=color, linewidth=1, label=model.name)
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
     plt.title('PSDs of diffusion potential')
-    plt.legend(bbox_to_anchor=(1.02, 1), loc="upper left")  # outside right
+    plt.legend(loc='upper right', ncol=2, prop={'size': 7})
     plt.savefig('Figures/psd_of_diff_pot.pdf', dpi=500, bbox_inches='tight')
     plt.show()
 
