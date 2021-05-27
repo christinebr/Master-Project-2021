@@ -56,7 +56,13 @@ In **plot_psd_others.py** I plot psd data taken from several figures
 (Baranauskas, Jankowski, and Miller) and from LFP data from Torbjørn and
 Graity.
 
+The **LFP_PSDs_chosed.py** file plot all PSDs of LFPs with the chosen PSDs in
+color and the rest in grayscale.
+
 In **main_psd_plot.py** I have loaded all files with PSD data and plotted 
 everything into one figure. A reduced version of this figure is produced in 
 **main_psd_plot_reduced.py** where only some of the PSD data is plotted 
 together with the PSDs of diffusion potentials.
+
+The file directory **Recreating_figures** contain concentration data from
+figures and .py files for recreating these. 
