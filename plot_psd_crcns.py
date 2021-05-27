@@ -58,7 +58,7 @@ if __name__ == '__main__':
               'darkkhaki', 'lightgreen', 'skyblue', 'plum']
     for data_file, color, abb in zip(data_files, colors, abbr):
         plot_psd_data(data_file, line_color=color, name=abb)
-    plt.title('PSD of LFP data')
+    plt.title('PSD of LFP recordings from CRCNS data sets')
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
     plt.legend(loc="lower left", ncol=3, prop={'size': 9.0})

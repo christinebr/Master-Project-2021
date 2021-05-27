@@ -10,9 +10,9 @@ plt.figure(figsize=(12, 7))
 psd_torbjorn()
 # CRCNS data
 crcns_files = sorted(get_data_filenames(), reverse=True)
-colors = ['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey',
+colors = ['grey', 'grey', 'darkgrey', 'darkgrey',
           'maroon', 'lightgrey', 'lightgrey', 'lightgrey',
-          'darkkhaki', 'lightgrey', 'lightgrey', 'plum']
+          'darkkhaki', 'slategrey', 'slategrey', 'plum']
 abbr = ['A', 'B', 'A', 'B', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'D']
 for file, color, abb in zip(crcns_files, colors, abbr):
     plot_psd_data(file, color, abb)
@@ -23,7 +23,7 @@ psd_from_miller2009(color='grey')
 psd_from_baranauskas2012()
 psd_from_jankowski2017(color='grey')
 
-plt.title('PSD of LFPs')
+plt.title('All PSD of LFP data')
 # axis labels and legend
 plt.xlabel('log$_{10}$(frequency) [Hz]')
 plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
