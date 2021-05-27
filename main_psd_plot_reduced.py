@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from plot_psd_crcns import get_data_filenames, plot_psd_data
 from plot_psd_others import psd_torbjorn, psd_graity, psd_from_baranauskas2012
 
-with_diff = True  # True = include diff, False = exclude diff
-with_SD = False  # True = include SD, False = exclude SD
+with_diff = False  # True = include diff, False = exclude diff
+with_SD = True  # True = include SD, False = exclude SD
 zoom = True  # zoomed figure
 plt.rc('font', size=13)
 plt.figure(figsize=(12, 7))
@@ -30,16 +30,22 @@ for file, color, abb in zip(crcns_files_red, colors_red, abbr_red):
 psd_graity()
 psd_from_baranauskas2012()
 
+# Colors diffusion potentials
+colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b',
+          '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'mediumaquamarine',
+          'gold', 'lightcoral', 'skyblue', 'palegreen']
+
 # Diffusion data
 if with_diff:
     diff_data = pd.read_csv("Data_PSD_other/psd_data_normal.csv", index_col='f')
     columns = diff_data.columns
     frequency = diff_data.index.values
 
-    for col in columns:
-        psd = diff_data[col].values
-        plt.plot(np.log10(frequency), np.log10(psd), '--', label=col)
-    plt.title('PSD of diffusion potential, crcns data and other data')
+    for column, color in zip(columns, colors):
+        psd = diff_data[column].values
+        plt.plot(np.log10(frequency), np.log10(psd), '--',
+                 color=color, label=column)
+    plt.title("PSDs of LFPs versus 'normal' diffusion potentials")
 
 # Spreading depression
 if with_SD:
@@ -47,10 +53,11 @@ if with_SD:
     columns = SD_data.columns
     frequency = SD_data.index.values
 
-    for col in columns:
-        psd = SD_data[col].values
-        plt.plot(np.log10(frequency), np.log10(psd), '-.', label=col)
-    plt.title('PSD of SD diffusion potential, crcns data and other data')
+    for column, color in zip(columns, colors):
+        psd = SD_data[column].values
+        plt.plot(np.log10(frequency), np.log10(psd), '-.',
+                 color=color, label=column)
+    plt.title("PSDs for LFPs versus 'pathological' diffusion potentials")
 
 # axis labels and legend
 plt.xlabel('log$_{10}$(frequency) [Hz]')
