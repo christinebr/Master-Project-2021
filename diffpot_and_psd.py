@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
     # ========================= Halnes 2016 ===================================
     # simulation, depth profile (Videm 2018, Figure 2.4)
-    TAU = 5
+    TAU = 6
     t = f", $\u03C4$={TAU}"
     c1 = scenario1(k=5.999, kbase=3, nabase=149)
     Halnes2016 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,

@@ -161,7 +161,7 @@ if __name__ == '__main__':
 
     # ========================= Frölich 2008 ==================================
     # Figure 7, spike-wave seizures
-    TAU = 20
+    TAU = 2.5
     t = f", $\u03C4$={TAU}"
     delta_k = 7
     c1 = scenario4(k=delta_k, kbase=3, nabase=149)
@@ -181,7 +181,7 @@ if __name__ == '__main__':
 
     # ============================ Hertz 2013 =================================
     # Figure 6, epileptic
-    TAU = 5
+    TAU = 14
     t = f", $\u03C4$={TAU}"
     delta_k = 2.3
     c1 = scenario4(k=delta_k, kbase=3, nabase=149)
