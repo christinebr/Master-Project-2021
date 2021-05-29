@@ -141,3 +141,7 @@ Data_PSD_other/psd_data_SD.csv
 Data_PSD_other/potential_data_normal.csv
 
 Data_LFP_other/
+
+Data_PSD_other/psd_Milstein2009_Fig1.csv
+
+Data_PSD_other/psd_Miller2009_Fig2A.csv

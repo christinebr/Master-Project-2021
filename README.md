@@ -31,11 +31,9 @@ calculated. Then the PSD of the exponential decaying potential is calculated.
 This file generates two plot: one for the exponentially decaying potential
 and one for the PSDs of that potential. At last the exponentially decaying 
 diffusion potential, the calculated PSD and corresponding frequency array is 
-saved to a .csv file for later use.
+saved to a .csv file for later use. All the same steps are done for the 
+'pathological' cases, where I used scenario 4. See **SD_diffpot_and_psd.py**.
 
-In **SD_diffpot_and_psd.py** I have used scenario 4 in the case of 
-Spreading Depression. The same steps as in **diffpot_and_psd.py** are done 
-for this case. 
 
 In **psd_of_crcns_lfp_data.py** I have loaded LFP data stored as .mat (because of 
 preprocessing in MATLAB) from dataset at CRCNS.org. Then I calculate the 
