@@ -16,10 +16,12 @@ with SciPy's ``signal.periodogram`` function.
 to calculate diffusion potential, the exponential decay of the potential and
 the power spectrum density of the potential. 
 
-In **comparing_equations.py** I have used scenario 1 for different 
-concentration changes of extracellular K+ to include Na+ and Cl-. Then 
-I have estimated the diffusion potential with the Goldman equation, the
-Henderson equation and the approximated equation.
+In **comparing_equations_and_scenarios.py** I have used scenario 1-4 for
+some concentration differences of extracellular K+ to calculate Na+ and Cl-. 
+Then I have estimated the diffusion potential with the Goldman equation, the
+Henderson equation and the approximated equation. I have also estimated PSDs 
+to compare the four scenarios. The functions for scenario 2 and 3 is placed 
+in **scenario.py**.
 
 In **diffpot_and_psd.py** I have used scenario 1 (delta_K + delta_Na = 
 delta_Cl) to find the initial concentrations. For each concentration data I 
