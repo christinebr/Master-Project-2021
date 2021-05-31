@@ -27,15 +27,21 @@ psd_from_miller2009()
 psd_from_baranauskas2012()
 psd_from_jankowski2017()
 
+# Colors diffusion potentials
+colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b',
+          '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', 'mediumaquamarine',
+          'gold', 'lightcoral', 'skyblue', 'palegreen']
+
 # Normal data
 if with_diff:
     diff_data = pd.read_csv("Data_PSD_other/psd_data_normal.csv", index_col='f')
     columns = diff_data.columns
     frequency = diff_data.index.values
 
-    for col in columns:
+    for col, color in zip(columns, colors):
         psd = diff_data[col].values
-        plt.plot(np.log10(frequency), np.log10(psd), '--', label=col)
+        plt.plot(np.log10(frequency), np.log10(psd), '--',
+                 color=color, label=col)
 
     plt.title("PSDs of 'normal' diffusion potentials, CRCNS data sets and"
               " other LFP data")
@@ -46,9 +52,10 @@ if with_SD:
     columns = SD_data.columns
     frequency = SD_data.index.values
 
-    for col in columns:
+    for col, color in zip(columns, colors):
         psd = SD_data[col].values
-        plt.plot(np.log10(frequency), np.log10(psd), '-.', label=col)
+        plt.plot(np.log10(frequency), np.log10(psd), '-.',
+                 color=color, label=col)
 
     plt.title("PSD of 'pathological' diffusion potentials, CRCNS data sets"
               " and other LFP data")
