@@ -41,7 +41,7 @@ plt.figure()
 plt.plot(t, v_t)
 t2 = "v(t) = sin(1*2\u03C0t)+0.5sin(5*2\u03C0t)+0.1sin(10*2\u03C0t)+" \
      "0.2sin(30*2\u03C0t)"
-plt.title(t2)
+plt.title("Superposition of sine waves:\n"+t2)
 plt.xlabel('t [s]')
 plt.ylabel('v(t) [V]')
 plt.savefig('Figures/superposition_of_sine_waves.pdf',
