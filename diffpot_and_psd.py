@@ -14,7 +14,7 @@ from diffusionpotential import DiffusionPotential
 # and corresponding frequency array is saved to a .csv file for later use.
 
 
-def scenario1(k=None, na=None, kbase=3.0, nabase=149.0):
+def scenario1(k=None, na=None, kbase=3.0, nabase=147.0):
     """
     Using scenario 1 to calculate initial concentration difference for K, Na
     and Cl.
@@ -59,14 +59,14 @@ if __name__ == '__main__':
     # Dietzel 1982 Figure 4A - recorded Na and K in 100 micro meters depth
     TAU = 4
     t = f", \u03C4={TAU}"
-    c2 = scenario1(k=6, kbase=3, nabase=149)
+    c2 = scenario1(k=6, kbase=3, nabase=147)
     # c2 = scenario1(k=6, na=15, kbase=3, nabase=149)
     Dietzel2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
                                   name='DietzelFig4A'+t)
     # Dietzel 1982 Figure 4B - recorded Na and K in 1000 micro meters depth
     TAU = 6
     t = f", \u03C4={TAU}"
-    c3 = scenario1(k=7, kbase=3, nabase=149)
+    c3 = scenario1(k=7, kbase=3, nabase=147)
     # c3 = scenario1(k=6, na=7, kbase=3, nabase=149)
     Dietzel3 = DiffusionPotential(conc=c3, tau=TAU, delta_t=dt, t_end=t_end,
                                   name='DietzelFig4B'+t)
@@ -78,13 +78,13 @@ if __name__ == '__main__':
     # Figure 2a - recordings in hippocampal synaptic stratum radiatum layer CA1
     TAU = 3
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=4.75, kbase=3.25, nabase=149)
+    c1 = scenario1(k=4.75, kbase=3.25, nabase=147)
     HajYasein1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                     name='Haj-YaseinFig2a'+t)
     # Figure 2b - recodings from the stratum pyramidale
     TAU = 2.5
     t = f", $\u03C4$={TAU}"
-    c2 = scenario1(k=9.25, kbase=3.25, nabase=149)
+    c2 = scenario1(k=9.25, kbase=3.25, nabase=147)
     HajYasein2 = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt, t_end=t_end,
                                     name='Haj-YaseinFig2b' + t)
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # visual cortex, electrical stimulation of the thalamus
     TAU = 0.75
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=1.891, kbase=2.735, nabase=149)
+    c1 = scenario1(k=1.891, kbase=2.735, nabase=147)
     Cordingley = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                     name='CordingleyFig5'+t)
     data.append(Cordingley)
@@ -105,13 +105,13 @@ if __name__ == '__main__':
     # posterier tibial nerve
     TAU = 12
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=6, kbase=3, nabase=149)
+    c1 = scenario1(k=6, kbase=3, nabase=147)
     SykovaFig3A = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                      name='SykovaFig3A'+t)
     # Figure 14A - recorded in rat cerebellum, simulation at 20 Hz
     TAU = 4
     t = f", $\u03C4$={TAU}"
-    c2 = scenario1(k=5, kbase=3, nabase=149)
+    c2 = scenario1(k=5, kbase=3, nabase=147)
     SykovaFig14A = DiffusionPotential(conc=c2, tau=TAU, delta_t=dt,
                                       t_end=t_end, name='SykovaFig14A'+t)
 
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     # Figure 2B - recorded 750 micro meter beneath an electrode injection
     TAU = 25
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=4, kbase=3, nabase=149)
+    c1 = scenario1(k=4, kbase=3, nabase=147)
     MccreeryFig2B = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt,
                                        t_end=t_end, name='MccreeryFig2B'+t)
     data.append(MccreeryFig2B)
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     # simulation, depth profile (Videm 2018, Figure 2.4)
     TAU = 6
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=5.999, kbase=3, nabase=149)
+    c1 = scenario1(k=5.999, kbase=3, nabase=147)
     Halnes2016 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                     name='Halnes2016'+t)
     data.append(Halnes2016)
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     # Figure 3, repetitive stimulation
     TAU = 20
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=4.4, kbase=3, nabase=149)
+    c1 = scenario1(k=4.4, kbase=3, nabase=147)
     Nicholson1987 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt,
                                        t_end=t_end, name='NicholsonFig4'+t)
     data.append(Nicholson1987)
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     # Figure 1G, response to light flash
     TAU = 6
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=0.9, kbase=4.5, nabase=149)
+    c1 = scenario1(k=0.9, kbase=4.5, nabase=147)
     Octeau2019 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                     name='OcteauFig1G'+t)
     data.append(Octeau2019)
@@ -157,7 +157,7 @@ if __name__ == '__main__':
     # Figure 3A, slow oscillation
     TAU = 2
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=0.6, kbase=3.4, nabase=149)
+    c1 = scenario1(k=0.6, kbase=3.4, nabase=147)
     Amzica2002 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                     name='AmzicaFig3A'+t)
     data.append(Amzica2002)
@@ -166,7 +166,7 @@ if __name__ == '__main__':
     # Figure 1B, slow oscillation
     TAU = 2
     t = f", $\u03C4$={TAU}"
-    c1 = scenario1(k=1.6, kbase=3, nabase=149)
+    c1 = scenario1(k=1.6, kbase=3, nabase=147)
     Frolich2008 = DiffusionPotential(conc=c1, tau=TAU, delta_t=dt, t_end=t_end,
                                      name='FrolichFig1B'+t)
     data.append(Frolich2008)
