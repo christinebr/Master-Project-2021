@@ -4,7 +4,7 @@ This repository contains the code used for my Master Thesis.
 The thesis marks the end of my study time at NMBU and was finished in the 
 spring semester of 2021. 
 
-Overview of the files in this repository:
+<ins>Overview of the files in this repository:</ins>
 
 In **PSD_of_sine_waves.py** I have used a superposition of four sine waves to 
 calculate the power spectrum density (PSD) by using the Fast Fourier Transform
@@ -64,5 +64,13 @@ everything into one figure. A reduced version of this figure is produced in
 **main_psd_plot_reduced.py** where only some of the PSD data is plotted 
 together with the PSDs of diffusion potentials.
 
-The file directory **Recreating_figures** contain concentration data from
+
+<ins>Overview of directories in this repository:</ins>
+
+**Data_PSD_crcns** contain the estimated PSD for CRCNS data sets
+
+**Data_PSD_other** contain PSD calculated from two data sets, and from 
+figures in articles
+
+**Recreating_figures** contain concentration data from
 figures and .py files for recreating these. 

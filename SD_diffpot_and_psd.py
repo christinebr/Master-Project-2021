@@ -57,19 +57,19 @@ if __name__ == '__main__':
     TAU = 22
     t = f", $\u03C4$={TAU}"
     delta_k = 19
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     EngerFig4F = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                     t_end=T_END, name='EngerFig4F'+t)
     TAU = 15
     t = f", $\u03C4$={TAU}"
     delta_k = 23
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     EngerFig4G = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                     t_end=T_END, name='EngerFig4G'+t)
     TAU = 14
     t = f", $\u03C4$={TAU}"
     delta_k = 28
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     EngerFig4H = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                     t_end=T_END, name='EngerFig4H'+t)
     data_SD.extend([EngerFig4F, EngerFig4G, EngerFig4H])
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     TAU = 30
     t = f", $\u03C4$={TAU}"
     delta_k = 51
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     HerrerasFig1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                       t_end=T_END, name='HerrerasFig1'+t)
     data_SD.append(HerrerasFig1)
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     TAU = 18
     t = f", $\u03C4$={TAU}"
     delta_k = 28
-    c1 = scenario4(k=delta_k, kbase=4, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=4, nabase=147)
     SykovaFig14B = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                       t_end=T_END, name='SykovaFig14B'+t)
 
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     TAU = 130
     t = f", $\u03C4$={TAU}"
     delta_k = 38
-    c1 = scenario4(k=delta_k, kbase=2, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=2, nabase=147)
     SykovaFig24 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                      t_end=T_END, name='SykovaFig24'+t)
     data_SD.extend([SykovaFig14B, SykovaFig24])
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     TAU = 16
     t = f", $\u03C4$={TAU}"
     delta_k = 50
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     HansenFig1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                     t_end=T_END, name='HansenFig1'+t)
     data_SD.append(HansenFig1)
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     TAU = 12  # only rise
     t = f", $\u03C4$={TAU}"
     delta_k = 47
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     HansenFig2 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                     t_end=T_END, name='HansenFig2'+t)
     data_SD.append(HansenFig2)
@@ -127,7 +127,7 @@ if __name__ == '__main__':
     TAU = 125
     t = f", $\u03C4$={TAU}"
     delta_k = 36
-    c1 = scenario4(k=delta_k, kbase=2.3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=2.3, nabase=147)
     KraigFig4 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                    t_end=T_END, name='KraigFig4'+t)
     data_SD.append(KraigFig4)
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     TAU = 20
     t = f", $\u03C4$={TAU}"
     delta_k = 33
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     NicholsonFig6 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                        t_end=T_END, name='NicholsonFig6'+t)
     data_SD.append(NicholsonFig6)
@@ -147,14 +147,14 @@ if __name__ == '__main__':
     TAU = 20
     t = f", $\u03C4$={TAU}"
     delta_k = 8.25
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     AmzicaFig6B = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                      t_end=T_END, name='AmzicaFig6B'+t)
     # Figure 7, spike-wave seizures
     TAU = 20
     t = f", $\u03C4$={TAU}"
     delta_k = 6.5
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     AmzicaFig7 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                     t_end=T_END, name='AmzicaFig7'+t)
     data_SD.extend([AmzicaFig6B, AmzicaFig7])
@@ -164,7 +164,7 @@ if __name__ == '__main__':
     TAU = 2.5
     t = f", $\u03C4$={TAU}"
     delta_k = 7
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
     FrolichFig1C = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                       t_end=T_END, name='FrolichFig1C'+t)
     data_SD.append(FrolichFig1C)
@@ -174,20 +174,20 @@ if __name__ == '__main__':
     TAU = 20
     t = f", $\u03C4$={TAU}"
     delta_k = 11
-    c1 = scenario4(k=delta_k, kbase=4, nabase=149)
+    c1 = scenario4(k=delta_k, kbase=4, nabase=147)
     RaimondoFig1 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
                                       t_end=T_END, name='RaimondoFig1'+t)
     data_SD.append(RaimondoFig1)
 
-    # ============================ Hertz 2013 =================================
-    # Figure 6, epileptic
+    # ============================ Dufour 2010 =================================
+    # Figure 5, epileptic seizure
     TAU = 14
     t = f", $\u03C4$={TAU}"
     delta_k = 2.3
-    c1 = scenario4(k=delta_k, kbase=3, nabase=149)
-    HertzFig6 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
-                                   t_end=T_END, name='HertzFig6'+t)
-    data_SD.append(HertzFig6)
+    c1 = scenario4(k=delta_k, kbase=3, nabase=147)
+    DufourFig5 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
+                                   t_end=T_END, name='DufourFig5'+t)
+    data_SD.append(DufourFig5)
 
     # =========================================================================
     #                       PLOTTING - Spreading Depression
@@ -202,7 +202,7 @@ if __name__ == '__main__':
         plt.plot(model.t, model.exp_decay, '-.', color=color, label=model.name)
     plt.xlabel('time [s]')
     plt.ylabel('potential [mV]')
-    plt.title('SD (Spreading Depression) diffusion potential')
+    plt.title("'Pathological' diffusion potentials")
     plt.legend(loc='upper right', ncol=2, prop={'size': 7})
     plt.savefig('Figures/SD_diff_pot.pdf', dpi=500, bbox_inches='tight')
     plt.show()
@@ -214,7 +214,7 @@ if __name__ == '__main__':
                  linewidth=1, label=model.name)
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
-    plt.title('PSDs of SD diffusion potential')
+    plt.title("PSDs of 'pathological' diffusion potentials")
     plt.legend(loc='upper right', ncol=2, prop={'size': 7})
     plt.savefig('Figures/SD_psd_of_diff_pot.pdf', dpi=500, bbox_inches='tight')
     plt.show()

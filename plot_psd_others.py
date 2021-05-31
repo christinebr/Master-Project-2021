@@ -88,7 +88,7 @@ if __name__ == '__main__':
     psd_torbjorn(do_linreg=True)
     psd_graity(do_linreg=True)
 
-    plt.title('PSDs of LFPs')
+    plt.title('PSDs of LFPs from articles')
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
     plt.xlim([-2, 3.1])
