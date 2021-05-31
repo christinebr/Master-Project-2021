@@ -179,15 +179,15 @@ if __name__ == '__main__':
                                       t_end=T_END, name='RaimondoFig1'+t)
     data_SD.append(RaimondoFig1)
 
-    # ============================ Hertz 2013 =================================
-    # Figure 6, epileptic
+    # ============================ Dufour 2010 =================================
+    # Figure 5, epileptic seizure
     TAU = 14
     t = f", $\u03C4$={TAU}"
     delta_k = 2.3
     c1 = scenario4(k=delta_k, kbase=3, nabase=147)
-    HertzFig6 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
-                                   t_end=T_END, name='HertzFig6'+t)
-    data_SD.append(HertzFig6)
+    DufourFig5 = DiffusionPotential(conc=c1, tau=TAU, delta_t=DELTA_T,
+                                   t_end=T_END, name='DufourFig5'+t)
+    data_SD.append(DufourFig5)
 
     # =========================================================================
     #                       PLOTTING - Spreading Depression
