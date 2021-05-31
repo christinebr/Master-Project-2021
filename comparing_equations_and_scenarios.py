@@ -56,7 +56,8 @@ if plot_all_cases:
 
 else:
     plt.legend()
-    plt.title('PSD - Comparing scenarios, $\u03C4$=5 s, K = +4')
+    plt.title('PSDs of diffusion potentials with different scenarios\n'
+              '($\u03C4$ = 5 s, \u0394K$^+$ = +4)')
     plt.xlabel('log$_{10}$(frequency) [Hz]')
     plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')
     plt.savefig('Figures/PSD_comparing_scenariosk2.pdf',

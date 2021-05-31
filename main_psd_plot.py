@@ -37,7 +37,8 @@ if with_diff:
         psd = diff_data[col].values
         plt.plot(np.log10(frequency), np.log10(psd), '--', label=col)
 
-    plt.title('PSD of diffusion potential, crcns data and other data')
+    plt.title("PSDs of 'normal' diffusion potentials, CRCNS data sets and"
+              " other LFP data")
 
 # Spreading depression
 if with_SD:
@@ -49,7 +50,8 @@ if with_SD:
         psd = SD_data[col].values
         plt.plot(np.log10(frequency), np.log10(psd), '-.', label=col)
 
-    plt.title('PSD of SD diffusion potential, crcns data and other data')
+    plt.title("PSD of 'pathological' diffusion potentials, CRCNS data sets"
+              " and other LFP data")
 # axis labels and legend
 plt.xlabel('log$_{10}$(frequency) [Hz]')
 plt.ylabel('log$_{10}$(PSD) [mV$^{2}$/Hz]')

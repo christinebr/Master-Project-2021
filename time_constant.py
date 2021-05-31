@@ -69,7 +69,7 @@ def henderson(k, na, cl):
     nabase = 149*np.ones(len(na))
     clbase = 152*np.ones(len(cl))
     sum1 = dk*(k-kbase)+dna*(na-nabase)-dcl*(cl-clbase)
-    sum2 = dk * (k - kbase) + dna * (na - nabase) - dcl * (cl - clbase)
+    sum2 = dk * (k - kbase) + dna * (na - nabase) + dcl * (cl - clbase)
     sum1_ln = dk * kbase + dna * nabase + dcl * clbase
     sum2_ln = dk*k + dna*na + dcl*cl
     return (R*T)/F * (sum1/sum2)*np.log(sum1_ln/sum2_ln)*1000 # mV
