@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from plot_psd_crcns import get_data_filenames, plot_psd_data
-from plot_psd_others import psd_torbjorn, psd_graity, psd_from_baranauskas2012
+from plot_psd_others import psd_torbjorn, psd_gratiy, psd_from_baranauskas2012
 
 with_diff = False  # True = include diff, False = exclude diff
 with_SD = True  # True = include SD, False = exclude SD
@@ -27,7 +27,7 @@ for file, color, abb in zip(crcns_files_red, colors_red, abbr_red):
     plot_psd_data(file, color, abb)
 
 # other PSD/LFP data
-psd_graity()
+psd_gratiy()
 psd_from_baranauskas2012()
 
 # Colors diffusion potentials

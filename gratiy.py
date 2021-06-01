@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import periodogram
 
-# Here I calculated the PSD of Graity's LFP data using SciPy's
+# Here I calculated the PSD of Gratiy's LFP data using SciPy's
 # signal.periodogram function, and by using the formula for PSD.
 # The result of both method are plotted in the same figure. The lines
 # overlap which indicate that the two methods give the same result
@@ -57,7 +57,7 @@ def psd_formula():
 
 if __name__ == '__main__':
     plt.figure()
-    plt.title('PSD of LFP data from Graity')
+    plt.title('PSD of LFP data from Gratiy')
 
     psd_periodogram()
     psd_formula()

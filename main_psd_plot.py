@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from plot_psd_crcns import get_data_filenames, plot_psd_data
-from plot_psd_others import psd_torbjorn, psd_graity, psd_from_miller2009, \
+from plot_psd_others import psd_torbjorn, psd_gratiy, psd_from_miller2009, \
     psd_from_baranauskas2012, psd_from_jankowski2017
 
 # This file plots PSD from all cases in one figure
@@ -22,7 +22,7 @@ for file, color, abb in zip(crcns_files, colors, abbr):
     plot_psd_data(file, color, abb)
 
 # other PSD/LFP data
-psd_graity()
+psd_gratiy()
 psd_from_miller2009()
 psd_from_baranauskas2012()
 psd_from_jankowski2017()

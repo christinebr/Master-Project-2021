@@ -2,11 +2,11 @@ import h5py
 import numpy as np
 from scipy.signal import periodogram
 
-# Load LFP data from Graity and Torbjørn, calculating mean PSD and saving
+# Load LFP data from Gratiy and Torbjørn, calculating mean PSD and saving
 # to file for later.
 
 
-def calculate_and_save_psd_of_lfp_graity():
+def calculate_and_save_psd_of_lfp_gratiy():
     """Loading LFP data, calculating mean PSD and saving to file."""
     # Load data
     file_name = 'Data_LFP_other/mouse_1_lfp_trial_avg_3sec.h5'
@@ -22,7 +22,7 @@ def calculate_and_save_psd_of_lfp_graity():
     f = f[index]
     psd_off_mean = psd_off_mean[index]
     # Save to file
-    np.savez('Data_PSD_other/psd_graity', f=f, PSD=psd_off_mean)
+    np.savez('Data_PSD_other/psd_gratiy', f=f, PSD=psd_off_mean)
 
 
 def calculate_and_save_psd_torbjorn():
@@ -43,5 +43,5 @@ def calculate_and_save_psd_torbjorn():
 
 
 if __name__ == '__main__':
-    calculate_and_save_psd_of_lfp_graity()
+    calculate_and_save_psd_of_lfp_gratiy()
     calculate_and_save_psd_torbjorn()

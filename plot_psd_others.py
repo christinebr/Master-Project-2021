@@ -21,17 +21,17 @@ def psd_torbjorn(do_linreg=False, color='cadetblue'):
               '\nslope: ', linreg.coef_)
 
 
-def psd_graity(do_linreg=False, color='palevioletred'):
+def psd_gratiy(do_linreg=False, color='palevioletred'):
     # Loading data
-    data = np.load("Data_PSD_other/psd_graity.npz")
+    data = np.load("Data_PSD_other/psd_gratiy.npz")
     # Plotting psd vs. frequency
     log_f = np.log10(data['f'])
     log_psd = np.log10(data['PSD'])
-    plt.plot(log_f, log_psd, color=color, label='LFP-Graity')
+    plt.plot(log_f, log_psd, color=color, label='LFP-Gratiy')
     if do_linreg:  # Linear Regression
         linreg = LinearRegression()
         linreg.fit(log_f[1:].reshape(-1, 1), log_psd[1:].reshape(-1, 1))
-        print('Graity\nintercept: ', linreg.intercept_,
+        print('Gratiy\nintercept: ', linreg.intercept_,
               '\nslope: ', linreg.coef_)
 
 
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     psd_from_jankowski2017(do_linreg=True)
     psd_from_miller2009(do_linreg=True)
     psd_torbjorn(do_linreg=True)
-    psd_graity(do_linreg=True)
+    psd_gratiy(do_linreg=True)
 
     plt.title('PSDs of LFPs from articles')
     plt.xlabel('log$_{10}$(frequency) [Hz]')
